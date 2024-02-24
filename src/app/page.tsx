@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: 'Trending Worldwide',
+  title: 'Trending Worldwide'
 }
 
 export default function Home() {
