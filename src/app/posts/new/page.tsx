@@ -1,7 +1,6 @@
-'use client';
 import AddPostForm from "@/components/addPostForm";
 
-const NewPost: React.FC = () => {
+const NewPost = () => {
   
   return (
     <>
