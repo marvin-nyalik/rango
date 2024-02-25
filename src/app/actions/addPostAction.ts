@@ -4,17 +4,24 @@ import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 
-const addPost = async (formData: FormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    
-    const post = await prisma.post.create({
-      data: {
-          title: formData.get("title") as string,
-          body: formData.get("body") as string
-      }
-    })
+export const addPost = async (formData: FormData) => {
+  const title = formData.get("title");
+  const body = formData.get("body");
 
-    revalidatePath("/posts");
+   try { 
+    await prisma.post.create({
+      data: {
+          title: title as string,
+          body: body as string
+      }
+    });
+   }
+
+   catch (error) {
+     return {
+      error:"Something went wrong!!!",
+     };
+   } 
+   revalidatePath("/posts");
   }
 
-export default addPost;
