@@ -23,5 +23,5 @@ export const addPost = async (formData: FormData) => {
      };
    } 
    revalidatePath("/posts");
-  }
+}
 
